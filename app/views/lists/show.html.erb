@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Lists#show</h1>
   <h3><%= @list.name %></h3>
+  <%= link_to 'Delete list', list_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Sure?" } %>
   <%= link_to 'Back', lists_path %>
   <%= link_to 'Add Movie', new_list_bookmark_path(@list.id) %>
 

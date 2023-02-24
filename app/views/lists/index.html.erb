@@ -9,11 +9,8 @@
 <div class="container">
   <div class="cards">
     <% @lists.each do |list| %>
-      <div class="card">
-        <% if list.photo.key %>
-          <%= cl_image_tag list.photo.key %>
-        <% end %>
-        <%= link_to "#{list.name}", list_path(list.id) %>
+      <div class="card" style="background-image: url('<%= cl_image_path list.photo.key if list.photo.key %>')">
+      <%= link_to "#{list.name}", list_path(list.id) %>
       </div>
     <% end %>
   </div>
