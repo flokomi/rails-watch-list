@@ -1,11 +1,12 @@
 <div class="container">
-  <h1>Bookmarks#new</h1>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-
-    <%= f.input :comment, placeholder: 'Enter a comment' %>
-    <%= f.association :movie, prompt: "Select a movie", input_html: {data: { controller: "tom-select"}} %>
-    <%= f.submit %>
-  <% end %>
+  <h1>Add a movie to <strong><%= "#{@list.name}" %></strong></h1>
+  <div class="form">
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie, prompt: "Select a movie", input_html: {data: { controller: "tom-select"}} %>
+      <%= f.input :comment, placeholder: 'Enter a comment' %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 
-<%# <%= f.input :movie, collection: Movie.all  %> %>
+<%# <%= f.input :movie, collection: Movie.all  %>
