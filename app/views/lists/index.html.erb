@@ -1,0 +1,18 @@
+<!-- BANNER -->
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://holidays.hrs.de/journal/wp-content/uploads/2015/06/Fotolia_75228084_Subscription_Monthly_XXL-831x560.jpg);">
+  <div class="container">
+    <h1>My Movie Lists</h1>
+    <p></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card">
+        <img src="" alt="">
+        <%= link_to "#{list.name}", list_path(list.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

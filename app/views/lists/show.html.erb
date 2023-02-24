@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Lists#show</h1>
+  <h3><%= @list.name %></h3>
+  <%= link_to 'Back', lists_path %>
+  <%= link_to 'Add Movie', new_list_bookmark_path(@list.id) %>
+
+  <div class="container">
+    <div class="cards">
+      <% @list.movies.each do |movie| %>
+        <div class="card">
+          <img src="<%= "#{movie.poster_url}" %>" alt="movie_pic">
+          <p><%= movie.title %></p>
+          <% bookmark = movie.bookmarks.find_by(list: @list.id, movie: movie.id ) %>
+          <p><%= bookmark.comment %></p>
+          <%= %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
