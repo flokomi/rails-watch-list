@@ -1,0 +1,38 @@
+.movie-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.movie-card {
+  display: flex;
+  height: 350px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-content {
+  padding: 12px;
+  position: relative;
+
+  h4 {
+    margin: 10px;
+  }
+
+  hr {
+    margin: 10px auto;
+  }
+
+  p {
+    margin: 0px;
+    font-size: 12px;
+    text-align: justify;
+  }
+
+  .movie-bookmark {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-style: italic;
+  }
+
+}

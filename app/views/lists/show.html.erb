@@ -1,22 +1,27 @@
 <div class="container">
-  <h1>Lists#show</h1>
-  <h3><%= @list.name %></h3>
-  <%= link_to 'Delete list', list_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Sure?" } %>
-  <%= link_to 'Back', lists_path %>
-  <%= link_to 'Add Movie', new_list_bookmark_path(@list.id) %>
+  <div class="margin-top">
+    <h1><%= @list.name %></h1>
+    <%= link_to 'Delete list', list_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Sure?" } %>
 
-  <div class="container">
-    <div class="cards">
-      <% @list.movies.each do |movie| %>
-        <div class="card">
-          <img src="<%= "#{movie.poster_url}" %>" alt="movie_pic">
-          <p><%= movie.title %></p>
-          <% bookmark = movie.bookmarks.find_by(list: @list.id, movie: movie.id ) %>
-          <p><%= bookmark.comment %></p>
-          <%= %>
-        </div>
-      <% end %>
+    <%= link_to 'Add Movie', new_list_bookmark_path(@list.id) %>
+
+    <div class="container">
+      <div class="movie-cards">
+        <% @list.movies.each do |movie| %>
+          <div class="movie-card">
+            <img src="<%= "#{movie.poster_url}" %>" alt="movie_pic">
+            <div class="movie-content">
+              <h4 class="movie-title"><%= movie.title %></h4>
+              <p>Avg. rating: <%= movie.rating %></p>
+              <hr>
+              <p><%= movie.overview %></p>
+              <% bookmark = movie.bookmarks.find_by(list: @list.id, movie: movie.id) %>
+              <p class="movie-bookmark"><%= bookmark.comment %></p>
+            </div>
+            <%= %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
 </div>

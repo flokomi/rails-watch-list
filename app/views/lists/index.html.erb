@@ -1,17 +1,29 @@
 <!-- BANNER -->
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://holidays.hrs.de/journal/wp-content/uploads/2015/06/Fotolia_75228084_Subscription_Monthly_XXL-831x560.jpg);">
-  <div class="container">
-    <h1>My Movie Lists</h1>
-    <p></p>
+<div class="banner-image" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://holidays.hrs.de/journal/wp-content/uploads/2015/06/Fotolia_75228084_Subscription_Monthly_XXL-831x560.jpg);">
+  <div class="banner-container">
+    <p class="banner-title">My Movie Lists</p>
   </div>
 </div>
 
 <div class="container">
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <div class="card" style="background-image: url('<%= cl_image_path list.photo.key if list.photo.key %>')">
-      <%= link_to "#{list.name}", list_path(list.id) %>
-      </div>
-    <% end %>
+  <div class="margin-top">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-list">
+          <% if list.photo.key %>
+            <%= link_to list_path(list.id) do %>
+              <%= image_tag(cl_image_path list.photo.key, width: 300, height: 180, crop: :fill) %>
+            <% end %>
+          <% else %>
+            <%= link_to list_path(list.id) do %>
+              <%= image_tag("https://source.unsplash.com/random/?#{['forest', 'fog'].sample}", width: 300, height: 180, crop: :fill) %>
+            <% end %>
+          <% end %>
+          <p><%= link_to list.name, list_path(list.id) %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<%# <%= image_tag("https://source.unsplash.com/random/?#{['forest', 'fog'].sample}", width: 300, height: 180, crop: :fill) %> %>klappt, aber wurde blockiert
